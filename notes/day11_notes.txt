@@ -1,0 +1,4 @@
+p1
+------
+198 == tow low (only 10 steps, not 100)
+1546 = right answer (100 steps)
