@@ -1,0 +1,10 @@
+p1
+-----
+not right -- 69
+not right -- 7
+right - 4970
+
+
+p2
+-----
+137948 -- right answer
