@@ -1,0 +1,5 @@
+p1
+-----
+857749 == too high (checking the .'s instead of #'s)
+956 == too high (folding on y always, my input was folding on X first)
+807 == right answer (implement folding on x and y)
