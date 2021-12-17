@@ -37,6 +37,8 @@ class Packet:
 
     sub_bits = None
 
+    solved_value = None
+
     def __init__(self, packet_type, packet_version):
         self.packet_type = packet_type
         self.packet_version = packet_version
@@ -78,16 +80,108 @@ class Packet:
         if self.num_children:
             return int(self.num_children, 2)
         return 0
+    
+    def set_num_children(self, num):
+        self.num_children = bin(num)
 
     def add_child(self, packet):
         self.children_packets.append(packet)
+    
+    def add_multiple_children(self, packets):
+        self.children_packets.extend(packets)
     
     def get_children(self):
         return self.children_packets
 
     def get_sub_bits(self):
         return self.sub_bits
-        
+    
+    def solve(self):
+        if self.solved_value != None:
+            return self.solved_value
+
+        if self.get_num_children() > 0:
+            if self.packet_type == 4:
+                print(4, 'Error - Self with children')
+                return
+            elif self.get_packet_type() == 0:
+                if self.solved_value == None:
+                    self.solved_value = 0
+                for child in self.get_children():
+                    self.solved_value += child.solve()
+                return self.solved_value
+            elif self.get_packet_type() == 1:
+                if not self.solved_value:
+                    self.solved_value = 1
+                for child in self.get_children():
+                    self.solved_value *= child.solve()
+                return self.solved_value
+            elif self.get_packet_type() == 2:
+                min1 = self.get_children()[0].solve()
+                for child in self.get_children():
+                    s1 = child.solve()
+                    if s1 < min1:
+                        min1 = s1
+                self.solved_value = min1
+                return self.solved_value
+            elif self.get_packet_type() == 3:
+                max1 = self.get_children()[0].solve()
+                for child in self.get_children():
+                    s1 = child.solve()
+                    if s1 > max1:
+                        max1 = s1
+                self.solved_value = max1
+                return self.solved_value
+            elif self.get_packet_type() == 5:
+                children = self.get_children()
+                for i in range(len(children)):
+                    children[i] = children[i].solve()
+                if children[0] > children[1]:
+                    self.solved_value = 1
+                else:
+                    self.solved_value = 0
+                return self.solved_value
+            elif self.get_packet_type() == 6:
+                children = self.get_children()
+                for i in range(len(children)):
+                    children[i] = children[i].solve()
+                if children[0] < children[1]:
+                    self.solved_value = 1
+                else:
+                    self.solved_value = 0
+                return self.solved_value
+            elif self.get_packet_type() == 7:
+                children = self.get_children()
+                top_children = []
+
+                if len(children) == 2:
+                    top_children = [children[0].solve(), children[1].solve()]
+                else:
+                    for i in range(len(children)):
+                        if len(children[i].get_children()) > 0:
+                            top_children.append(children[i].solve())
+                            break
+
+                    q = [children[0]]
+
+                    total_num_of_first_children = 0
+                    while len(q) > 0:
+                        p_packet = q.pop(0)
+                        total_num_of_first_children += p_packet.get_num_children()
+                        q.extend(p_packet.get_children())
+                
+                    top_children.append(children[total_num_of_first_children + 1].solve())
+                
+                if top_children[0] == top_children[1]:
+                    self.solved_value = 1
+                    return self.solved_value
+                else:
+                    self.solved_value = 0
+                    return self.solved_value
+                
+        print('Packet Type - LV', self.get_packet_type())
+        self.solved_value = self.literal_value
+        return self.solved_value
 
 def get_packet(bin):
     packet_version = bin[:3]
@@ -111,7 +205,6 @@ def get_packet(bin):
         for bn in bin_nums:
             s += bn
         
-
         packet = Packet(packet_type, packet_version)
         packet.literal_value = int(s, 2)
         return (bin, packet)
@@ -192,7 +285,6 @@ def part1():
         print('##### Part 1 #####')
         print('Total lines', len(lines))
         print('Time', time() - t0)
-        # print('Packets', master_packet_list)
 
         versions = []
         for packet in master_packet_list:
@@ -201,4 +293,41 @@ def part1():
         print('Total Sum of Versions', sum(versions))
        
 
-part1()
+def part2():
+    with open(input_file_name) as f:
+        t0 = time()
+        lines = f.readlines()
+
+        hex_input = []
+        bin_input = ''
+        for l in lines:
+            for i in l:
+                hex_input.append(i)
+                bin_input += hex_to_bin[i]
+        
+        print('# of Hex Input', len(hex_input))
+        print('# of Bin Input', len(bin_input))
+        master_packet_list = []
+        q = []
+
+        aa = process_bin_input(bin_input)
+        master_packet_list.extend(aa[0])
+        q.extend(aa[1])
+        
+        while len(q) > 0:
+            curr_packet = q.pop(0)
+            
+            bb = process_bin_input(curr_packet.get_sub_bits())
+            master_packet_list.extend(bb[0])
+            curr_packet.add_multiple_children(bb[0])
+            curr_packet.set_num_children(len(bb[0]))
+            q.extend(bb[1])
+
+        print('##### Part 2 #####')
+        print('Total lines', len(lines))
+        print('Time', time() - t0)
+
+        print('Solved', master_packet_list[0].solve())
+
+
+part2()
