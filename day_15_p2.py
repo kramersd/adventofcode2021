@@ -2,7 +2,7 @@ from time import time
 from heapq import heapify, heappop, heappush
 
 # input_file_name = 'aoc_puzzle15_input.txt'
-input_file_name = 'day_15_sample.txt'
+input_file_name = 'sample_day_15.txt'
 
 def p2_read_input(lines):
     board = []

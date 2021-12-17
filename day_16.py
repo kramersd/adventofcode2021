@@ -1,7 +1,7 @@
 from time import time
 
 input_file_name = 'aoc_puzzle16_input.txt'
-# input_file_name = 'day_16_sample.txt'
+# input_file_name = 'sample_day_16.txt'
 
 hex_to_bin = {
     '0': '0000',
