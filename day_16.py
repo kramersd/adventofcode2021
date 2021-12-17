@@ -1,7 +1,7 @@
 from time import time
 
-# input_file_name = 'aoc_puzzle16_input.txt'
-input_file_name = 'day_16_sample.txt'
+input_file_name = 'aoc_puzzle16_input.txt'
+# input_file_name = 'day_16_sample.txt'
 
 hex_to_bin = {
     '0': '0000',
@@ -29,7 +29,7 @@ class Packet:
     num_children = None
     num_bits = None
 
-    children_packets = []
+    children_packets = None
 
     parent_packet = None
 
@@ -40,6 +40,7 @@ class Packet:
     def __init__(self, packet_type, packet_version):
         self.packet_type = packet_type
         self.packet_version = packet_version
+        self.children_packets = []
     
     def __str__(self):
         t0 = 't' + str(self.get_packet_type())
@@ -95,11 +96,7 @@ def get_packet(bin):
     packet_type = bin[:3]
     bin = bin[3:]
 
-    # print('Version', int(packet_version, 2))
-    # print('Type', int(packet_type, 2))
-
     if int(packet_type, 2) == 4:
-        # print('Literal Packet')
         found_last_number = False
         bin_nums = []
 
@@ -113,32 +110,27 @@ def get_packet(bin):
         s = ''
         for bn in bin_nums:
             s += bn
-        # print('Literal Value', int(s, 2))
+        
 
         packet = Packet(packet_type, packet_version)
         packet.literal_value = int(s, 2)
         return (bin, packet)
     else:
-        # print('Operator Packet')
         len_type_id = bin[:1]
         bin = bin[1:]
 
         if len_type_id == '0':
-            # print('Len Type 0')
             packet = Packet(packet_type, packet_version)
             packet.num_bits = bin[:15]
             bin = bin[15:]
             packet.sub_bits = bin[:packet.get_num_bits()]
-            # print('Sub bits', packet.get_sub_bits())
             bin = bin[packet.get_num_bits():]
             return (bin, packet)
         
         elif len_type_id == '1':
-            # print('Len Type 1')
             packet = Packet(packet_type, packet_version)
             packet.num_children = bin[:11]
             bin = bin[11:]
-            # print('Num Children', packet.get_num_children())
 
             return (bin, packet)
 
@@ -156,28 +148,17 @@ def process_bin_input(bin_input):
             q.append(packet)
 
         if len(parent_packets) > 0:
-            print('Adding Child packet', packet)
-            pp = parent_packets[len(parent_packets) - 1]
-            print('Parent packet', pp)
-            pp.add_child(packet)
-            print('Children', pp.get_children())
-            print('Children of children', packet.get_children())
-
-            if len(pp.children_packets) == pp.get_num_children():
-                # print('Removing parent')
+            last_parent_packet = parent_packets[len(parent_packets) - 1]
+            last_parent_packet.add_child(packet)
+            if len(last_parent_packet.children_packets) == last_parent_packet.get_num_children():
                 parent_packets.pop(len(parent_packets) - 1)
         
-        if packet.get_num_children() > 0:
-            print('Found a parent', packet.get_num_children())
-            print('Parent XYZ', packet)
+        if packet.get_num_children() > 0: 
             parent_packets.append(packet)
-            print('Parent packets', parent_packets)
         
         packet_list.append(packet)
         bin_input = bin
     return (packet_list, q)
-        
-
 
 def part1():
     with open(input_file_name) as f:
@@ -191,8 +172,8 @@ def part1():
                 hex_input.append(i)
                 bin_input += hex_to_bin[i]
         
-        print('Hex Input', len(hex_input))
-        print('Bin Input', len(bin_input))
+        print('# of Hex Input', len(hex_input))
+        print('# of Bin Input', len(bin_input))
         master_packet_list = []
         q = []
 
@@ -211,17 +192,13 @@ def part1():
         print('##### Part 1 #####')
         print('Total lines', len(lines))
         print('Time', time() - t0)
-        print('Packets', master_packet_list)
-        print('---------------------------------------')
+        # print('Packets', master_packet_list)
 
         versions = []
         for packet in master_packet_list:
-            print(('Packet', packet))
-            print('Children', len(packet.get_children()))
             versions.append(packet.get_packet_version())
 
-        # print('Versions', versions)
         print('Total Sum of Versions', sum(versions))
-        # print('Total Sum of Versions', sum(master_packet_list))
+       
 
 part1()
