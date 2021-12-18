@@ -4,7 +4,6 @@ from copy import copy
 input_file_name = 'aoc_puzzle17_input.txt'
 # input_file_name = 'sample_day_17.txt'
 
-
 def p1_within_x(pos, x_min, x_max):
     if pos[0] >= x_min and pos[0] <= x_max:
         return True
