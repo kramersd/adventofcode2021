@@ -60,7 +60,7 @@ class Packet:
         return str((v0, t1, lv, nc, nb))
 
     def __eq__(self, other):
-        if not type(other) == Packet:
+        if not isinstance(other, Packet):
             return False
         
         return self.id == other.id

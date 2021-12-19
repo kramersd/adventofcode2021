@@ -1,0 +1,272 @@
+----- Reduction Start -----
+Reduction FPS [1,1]
+First Explosion
+Loop Exploding Start
+Start Exploding
+End Exploding - Early
+after explode [1,1]
+Finished Loop Exploding
+Start Loop Splitting
+Start Splitting
+after split [1,1]
+Loop Exploding Start
+Start Exploding
+End Exploding - Early
+after explode [1,1]
+Finished Loop Exploding
+Finished Loop Splitting
+[('[1,1]', 'd1')]
+[1,1]
+Finished Reduction
+----- Reduction Start -----
+Reduction FPS [2,2]
+First Explosion
+Loop Exploding Start
+Start Exploding
+End Exploding - Early
+after explode [2,2]
+Finished Loop Exploding
+Start Loop Splitting
+Start Splitting
+after split [2,2]
+Loop Exploding Start
+Start Exploding
+End Exploding - Early
+after explode [2,2]
+Finished Loop Exploding
+Finished Loop Splitting
+[('[2,2]', 'd1')]
+[2,2]
+Finished Reduction
+----- Reduction Start -----
+Reduction FPS [3,3]
+First Explosion
+Loop Exploding Start
+Start Exploding
+End Exploding - Early
+after explode [3,3]
+Finished Loop Exploding
+Start Loop Splitting
+Start Splitting
+after split [3,3]
+Loop Exploding Start
+Start Exploding
+End Exploding - Early
+after explode [3,3]
+Finished Loop Exploding
+Finished Loop Splitting
+[('[3,3]', 'd1')]
+[3,3]
+Finished Reduction
+----- Reduction Start -----
+Reduction FPS [4,4]
+First Explosion
+Loop Exploding Start
+Start Exploding
+End Exploding - Early
+after explode [4,4]
+Finished Loop Exploding
+Start Loop Splitting
+Start Splitting
+after split [4,4]
+Loop Exploding Start
+Start Exploding
+End Exploding - Early
+after explode [4,4]
+Finished Loop Exploding
+Finished Loop Splitting
+[('[4,4]', 'd1')]
+[4,4]
+Finished Reduction
+----- Reduction Start -----
+Reduction FPS [5,5]
+First Explosion
+Loop Exploding Start
+Start Exploding
+End Exploding - Early
+after explode [5,5]
+Finished Loop Exploding
+Start Loop Splitting
+Start Splitting
+after split [5,5]
+Loop Exploding Start
+Start Exploding
+End Exploding - Early
+after explode [5,5]
+Finished Loop Exploding
+Finished Loop Splitting
+[('[5,5]', 'd1')]
+[5,5]
+Finished Reduction
+----- Reduction Start -----
+Reduction FPS [6,6]
+First Explosion
+Loop Exploding Start
+Start Exploding
+End Exploding - Early
+after explode [6,6]
+Finished Loop Exploding
+Start Loop Splitting
+Start Splitting
+after split [6,6]
+Loop Exploding Start
+Start Exploding
+End Exploding - Early
+after explode [6,6]
+Finished Loop Exploding
+Finished Loop Splitting
+[('[6,6]', 'd1')]
+[6,6]
+Finished Reduction
+All Lines as strings
+0 [1,1]
+1 [2,2]
+2 [3,3]
+3 [4,4]
+4 [5,5]
+5 [6,6]
+--------------------- Start Summation --------------------------
+A [1,1]
+B [2,2]
+Before Depth Changes New Sum FPS [[1,1],[2,2]]
+----- Reduction Start -----
+Reduction FPS [[1,1],[2,2]]
+First Explosion
+Loop Exploding Start
+Start Exploding
+End Exploding - Early
+after explode [[1,1],[2,2]]
+Finished Loop Exploding
+Start Loop Splitting
+Start Splitting
+after split [[1,1],[2,2]]
+Loop Exploding Start
+Start Exploding
+End Exploding - Early
+after explode [[1,1],[2,2]]
+Finished Loop Exploding
+Finished Loop Splitting
+[[1,1],[2,2]]
+Finished Reduction
+######## ####### FS So Far [[1,1],[2,2]]
+A [[1,1],[2,2]]
+B [3,3]
+Before Depth Changes New Sum FPS [[[1,1],[2,2]],[3,3]]
+----- Reduction Start -----
+Reduction FPS [[[1,1],[2,2]],[3,3]]
+First Explosion
+Loop Exploding Start
+Start Exploding
+End Exploding - Early
+after explode [[[1,1],[2,2]],[3,3]]
+Finished Loop Exploding
+Start Loop Splitting
+Start Splitting
+after split [[[1,1],[2,2]],[3,3]]
+Loop Exploding Start
+Start Exploding
+End Exploding - Early
+after explode [[[1,1],[2,2]],[3,3]]
+Finished Loop Exploding
+Finished Loop Splitting
+[[[1,1],[2,2]],[3,3]]
+Finished Reduction
+######## ####### FS So Far [[[1,1],[2,2]],[3,3]]
+A [[[1,1],[2,2]],[3,3]]
+B [4,4]
+Before Depth Changes New Sum FPS [[[[1,1],[2,2]],[3,3]],[4,4]]
+----- Reduction Start -----
+Reduction FPS [[[[1,1],[2,2]],[3,3]],[4,4]]
+First Explosion
+Loop Exploding Start
+Start Exploding
+End Exploding - Early
+after explode [[[[1,1],[2,2]],[3,3]],[4,4]]
+Finished Loop Exploding
+Start Loop Splitting
+Start Splitting
+after split [[[[1,1],[2,2]],[3,3]],[4,4]]
+Loop Exploding Start
+Start Exploding
+End Exploding - Early
+after explode [[[[1,1],[2,2]],[3,3]],[4,4]]
+Finished Loop Exploding
+Finished Loop Splitting
+[[[[1,1],[2,2]],[3,3]],[4,4]]
+Finished Reduction
+######## ####### FS So Far [[[[1,1],[2,2]],[3,3]],[4,4]]
+A [[[[1,1],[2,2]],[3,3]],[4,4]]
+B [5,5]
+Before Depth Changes New Sum FPS [[[[[1,1],[2,2]],[3,3]],[4,4]],[5,5]]
+----- Reduction Start -----
+Reduction FPS [[[[[1,1],[2,2]],[3,3]],[4,4]],[5,5]]
+First Explosion
+Loop Exploding Start
+Start Exploding
+Max depth Node ('[1,1]', 'd5')
+********************* Search Node ('[1,1]', 'd5')
+********************* Parent node ('[SnailFishPair,SnailFishPair]', 'd4')
+End Exploding - Propogated
+after explode [[[[0,[3,2]],[3,3]],[4,4]],[5,5]]
+Start Exploding
+Max depth Node ('[3,2]', 'd5')
+********************* Search Node ('[3,2]', 'd5')
+********************* Parent node ('[3,SnailFishPair]', 'd4')
+********************* Search Node ('[3,SnailFishPair]', 'd4')
+********************* Parent node ('[SnailFishPair,SnailFishPair]', 'd3')
+End Exploding - Propogated
+after explode [[[[3,0],[5,3]],[4,4]],[5,5]]
+Start Exploding
+End Exploding - Early
+after explode [[[[3,0],[5,3]],[4,4]],[5,5]]
+Finished Loop Exploding
+Start Loop Splitting
+Start Splitting
+after split [[[[3,0],[5,3]],[4,4]],[5,5]]
+Loop Exploding Start
+Start Exploding
+End Exploding - Early
+after explode [[[[3,0],[5,3]],[4,4]],[5,5]]
+Finished Loop Exploding
+Finished Loop Splitting
+[[[[3,0],[5,3]],[4,4]],[5,5]]
+Finished Reduction
+######## ####### FS So Far [[[[3,0],[5,3]],[4,4]],[5,5]]
+A [[[[3,0],[5,3]],[4,4]],[5,5]]
+B [6,6]
+Before Depth Changes New Sum FPS [[[[[3,0],[5,3]],[4,4]],[5,5]],[6,6]]
+----- Reduction Start -----
+Reduction FPS [[[[[3,0],[5,3]],[4,4]],[5,5]],[6,6]]
+First Explosion
+Loop Exploding Start
+Start Exploding
+Max depth Node ('[3,0]', 'd5')
+********************* Search Node ('[3,0]', 'd5')
+********************* Parent node ('[SnailFishPair,SnailFishPair]', 'd4')
+End Exploding - Propogated
+after explode [[[[0,[5,3]],[4,4]],[5,5]],[6,6]]
+Start Exploding
+Max depth Node ('[5,3]', 'd5')
+********************* Search Node ('[5,3]', 'd5')
+********************* Parent node ('[5,SnailFishPair]', 'd4')
+********************* Search Node ('[5,SnailFishPair]', 'd4')
+********************* Parent node ('[SnailFishPair,SnailFishPair]', 'd3')
+End Exploding - Propogated
+after explode [[[[5,0],[7,4]],[5,5]],[6,6]]
+Start Exploding
+End Exploding - Early
+after explode [[[[5,0],[7,4]],[5,5]],[6,6]]
+Finished Loop Exploding
+Start Loop Splitting
+Start Splitting
+after split [[[[5,0],[7,4]],[5,5]],[6,6]]
+Loop Exploding Start
+Start Exploding
+End Exploding - Early
+after explode [[[[5,0],[7,4]],[5,5]],[6,6]]
+Finished Loop Exploding
+Finished Loop Splitting
+[[[[5,0],[7,4]],[5,5]],[6,6]]
+Finished Reduction
+######## ####### FS So Far [[[[5,0],[7,4]],[5,5]],[6,6]]
+Final string [[[[5,0],[7,4]],[5,5]],[6,6]]
